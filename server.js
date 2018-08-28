@@ -21,11 +21,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req,res,next) => {
-  res.render('maintenance.hbs',{
-    maintenanceMessage: `Something's not quite right`
-  })
-});
+// app.use((req,res,next) => {
+//   res.render('maintenance.hbs',{
+//     maintenanceMessage: `Something's not quite right`
+//     next();
+//   })
+// });
 
 app.use(express.static(__dirname + '/public')); //this is a middleware, which makes express work a little differently.
 
@@ -58,6 +59,14 @@ res.render('home.hbs',{
 app.get('/about', (req,res) => {  //we need not only stick to route route method
 res.render('about.hbs', {
   pageTitle: 'About page',
+  currentYear: new Date().getFullYear()
+});
+  // res.send('About page');
+});
+
+app.get('/project', (req,res) => {  //we need not only stick to route route method
+res.render('project.hbs', {
+  pageTitle: 'Project page',
   currentYear: new Date().getFullYear()
 });
   // res.send('About page');
